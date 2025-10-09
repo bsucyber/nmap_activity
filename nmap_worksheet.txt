@@ -29,6 +29,7 @@ They may seems unrelated to each other, but the more you learn about a target, t
 
 
 3. Run a default script scan against the target, but to save time, only scan the ports you know are open.
+
 	Questions:
 		a) What is the title of the web page on port 80?
 	
@@ -38,14 +39,13 @@ They may seems unrelated to each other, but the more you learn about a target, t
 
 
 4. We've identified open ports, service versions, and gathered details with scripts. 
-   Now let's try to determine the underlying operating system of the server 
-   and the network route our packets take to get there.
+   Now let's figure out the network route our packets take to get there.
 
-   Run a scan that enables OS detection and traceroute.
+   Run a scan that enables traceroute and use the option to disable port scanning.
 
-	Questions:
-		a) What is the OS?
-		b) How many network hops are between you and the server?
+	Question:
+
+		a) How many network hops are between you and the server?
 
 
 
