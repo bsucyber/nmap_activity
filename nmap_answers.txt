@@ -1,0 +1,57 @@
+Answers for the nmap activity
+
+
+1. Run a basic scan on this domain and save the results to a file.  
+	domain: scanme.nmap.org
+
+Scan: sudo nmap scanme.nmap.org -On scan_output.txt
+	Questions:
+		a) What ports are open? 22, 80, 9929, 31337
+	
+		b) How many ports were filtered by the firewall? 996
+
+		c) What "service" is using the highest open port? Elite
+
+
+
+
+2. That default scan is fairly stealthy, but we want more info and we want it quickly. 
+   This means we need to use more aggressive scanning options.
+
+   Run a scan that gives us specific versions of the services being used. 
+   Also speed up the timing of the packets to the second highest setting.
+
+Scan: sudo nmap scanme.nmap.org -sV -T4
+	Questions:
+		a) What version of ssh is the server using? OpenSSH 6.6.1p1
+
+		b) Did any of the listed services change? Why? port 31337 changed from elite to tcpwrapped. This has to do with how nmap initially checks what services are running. It uses a database to "guess" the service unless -sV is used. In this case elite is not a real service but rather a meme based on internet culture. tcpwrapped is also just telling us that a connection is made and then immediately closed.
+
+
+
+
+3. Run a default script scan against the target, but to save time, only scan the ports you know are open.
+Scan: nmap scanme.nmap.org -sC -p 22,80,9929
+	Questions:
+		a) What is the title of the web page on port 80?
+	
+		b) The ssh-hostkey script provides several cryptographic fingerprints for the SSH server. What is the SHA256 hash it displays?
+
+
+4. We've identified open ports, service versions, and gathered details with scripts. 
+   Now let's figure out the network route our packets take to get there.
+
+   Run a scan that enables traceroute and use the option to disable port scanning.
+Scan" sudo nmap scanme.nmap.org --traceroute -sn
+	Question:
+
+		a) How many network hops are between you and the server? Depends. I had 2.
+
+
+
+5.Putting it all together:
+	At this point we have gathered quite a bit of info on this server. If we were performing a pentest we could use that info to look for vulnerabilites.
+	
+	Question:
+		a) What vulnerability is associated with OpenSSH < 7.7 that allows user enumeration (Answer with the CVE number)
+			CVE-2018-15473
