@@ -33,7 +33,7 @@ They may seems unrelated to each other, but the more you learn about a target, t
 	Questions:
 		a) What is the title of the web page on port 80?
 	
-		b) The ssh-hostkey script provides several cryptographic fingerprints for the SSH server. What is the SHA256 hash it displays?
+		b) The ssh-hostkey script provides several cryptographic fingerprints for the SSH server. What is the output it displays?
 
 
 
